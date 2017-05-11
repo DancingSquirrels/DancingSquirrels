@@ -2,6 +2,11 @@ const Promise = require('bluebird');
 const request = Promise.promisify(require('request'));
 const parseString = require('xml2js-parser').parseString;
 const express = require('express');
+const UserModel = require('../../db/models/User.js');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10;
 
 const router = express.Router();
 
@@ -10,14 +15,26 @@ router.route('/')
     res.status(200).sendFile('/index.html');
   })
 
-router.route('/login')
+router.route('/login/local')
   .get((req, res) => {
-    res.status(200).sendFile('/login.html');
+    res.redirect('/#/local/login')
   })
 
 router.route('/signup')
-  .get((req, res) => {
-    res.status(200).sendFile('/signup.html');
+  .post((req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+      UserModel.User
+      .forge({ username: username, password: hash })
+      .save()
+      .then((data) => {
+        res.send('success');
+      })
+      .catch((err) => {
+        res.send('error');
+      })
+    })
   })
 
 router.route('/search')
