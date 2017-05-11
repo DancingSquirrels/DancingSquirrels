@@ -16,6 +16,7 @@ class Layout extends React.Component {
             <Link to="/signup">Signup</Link>
           </li>
         </ul>
+        <h1>Podiocast!</h1>
       </div>
     );
   }

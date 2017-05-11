@@ -3,6 +3,8 @@
   "scripts": {
   },
   "env": {
+    "DATABASE_URL": "postgres://trksvrwbrgncsq:ba467a0d70a8987f6eb30f399c57e7649483563083dbceeb4f731a5a75d0337e@ec2-54-83-205-71.compute-1.amazonaws.com:5432/d6afvur5rs94ad",
+    "NPM_CONFIG_PRODUCTION": false
   },
   "formation": {
   },
