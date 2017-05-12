@@ -4,6 +4,7 @@ import $ from 'jquery';
 import PodcastMain from './components/PodcastMain.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
+import UserHomePage from './components/UserHomePage.jsx';
 import Layout from './layout/Layout.jsx';
 
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
@@ -69,6 +70,7 @@ class App extends React.Component {
                                   onClickPodcast={this.onClickPodcast}/> )}/>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/user" component={UserHomePage} />
           </Switch>
         </div>
       </Router>
