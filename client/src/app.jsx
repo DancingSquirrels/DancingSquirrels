@@ -22,6 +22,15 @@ class App extends React.Component {
     this.onClickPodcast = this.onClickPodcast.bind(this);
   }
 
+  componentDidMount() {
+   $.get('/topTen')
+    .done((results) => {
+      this.setState({
+        podcasts: results
+      });
+    }) 
+  }
+
   clearSearchResults() {
     this.setState({
       podcasts: [],
@@ -76,6 +85,7 @@ class App extends React.Component {
             <Route path="/podcasts/episodes" 
                    component={() => (<PodcastEpisodes podcastEpisodes={this.state.podcastEpisodes} /> )} /> 
                                              
+
           </Switch>
         </div>
       </Router>
