@@ -16,6 +16,7 @@ class Layout extends React.Component {
             <Link to="/logout" onClick={this.props.logoutUser}>Logout</Link>
           </li>
         </ul>
+        <h1>Podiocast!</h1>
       </div>
     );
   }
