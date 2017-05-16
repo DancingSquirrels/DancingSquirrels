@@ -5,6 +5,7 @@ const UserFavoritePodcastModel = require('../../db/models/User_Favorite_Podcast.
 const ReviewModel = require('../../db/models/Review.js');
 const utils = require('../utils.js');
 const session = require('express-session');
+const path = require('path')
 const passport = require('passport');
 const authHelpers = require('../auth/authHelpers.js');
 const sessionHelpers = require('../auth/sessionHelpers.js');
@@ -16,7 +17,7 @@ const router = express.Router();
 
 router.route('/')
   .get((req, res) => {
-    res.status(200).sendFile('/index.html');
+    res.status(200).sendFile(path.join(__dirname + '/../../index.html'));
   });
 
 router.route('/logout')
@@ -193,5 +194,10 @@ router.route('/getUser')
     }
   });
 
+
+router.route('*')
+  .get((req, res) => {
+    res.sendFile(path.join(__dirname + '/../../index.html'));
+  });
 
 module.exports = router;
